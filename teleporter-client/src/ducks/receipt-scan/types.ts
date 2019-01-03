@@ -1,0 +1,1 @@
+export const CAMERA_PERMISSION_CHANGE = 'camera_permission_changed';
