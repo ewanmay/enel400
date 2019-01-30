@@ -8,7 +8,10 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
+import { Device } from "react-native-ble-plx";
+import Amplify from 'aws-amplify';
 
+import aws_exports from './src/aws-exports';
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
@@ -18,6 +21,10 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+
+  componentDidMount() {
+    Amplify.configure(aws_exports);
+  }
   render() {
     return (
       <View style={styles.container}>
