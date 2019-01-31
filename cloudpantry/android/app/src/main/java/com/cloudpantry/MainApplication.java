@@ -3,11 +3,14 @@ package com.cloudpantry;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.polidea.reactnativeble.BlePackage;
+import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
+
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
+// react-native-splash-screen < 0.3.1
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +27,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new BlePackage()
+            new VectorIconsPackage(),
+            new SplashScreenReactPackage()  //here
       );
     }
 

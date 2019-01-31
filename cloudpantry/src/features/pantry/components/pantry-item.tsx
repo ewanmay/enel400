@@ -8,7 +8,7 @@ interface PantryItemProps {
   details: PantryItem
 }
 
-const PantryItem = ({ details }: PantryItemProps) => {
+const thePantryItem = ({ details }: PantryItemProps) => {
   const { containerStyle, textStyle } = pantryItemStyles;
   const { id, name, quantity, price, expirationDate } = details;
   return (
@@ -18,4 +18,4 @@ const PantryItem = ({ details }: PantryItemProps) => {
   );
 };
 
-export default PantryItem;
+export default thePantryItem;

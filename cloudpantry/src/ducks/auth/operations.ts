@@ -11,7 +11,6 @@ import {
 import { AsyncStorage } from "react-native";
 import { Dispatch } from "redux";
 import firebase from "firebase";
-import { Facebook } from "expo";
 import v4 from "uuid";
 import { navigate } from "../../utils/navigationService";
 
@@ -54,28 +53,3 @@ export const register = (
   dispatch({ type: DONE_LOADING });
 };
 
-export const doFacebookLogin = async (dispatch: Dispatch) => {
-  const result = await Facebook.logInWithReadPermissionsAsync(
-    "496239457466112",
-    {
-      permissions: ["public_profile"]
-    }
-  );
-
-  if (result.type === "cancel") {
-    return dispatch({
-      type: FACEBOOK_LOGIN_FAIL,
-      payload: { message: "Please log in before you continue" }
-    });
-  }
-
-  if (result.token) {
-    await AsyncStorage.setItem("fb_token", result.token);
-    dispatch({ type: FACEBOOK_LOGIN_SUCCESS, payload: result.token });
-    navigate("Home", {});
-  }
-  return dispatch({
-    type: FACEBOOK_LOGIN_FAIL,
-    payload: { message: "Please log in before you continue" }
-  });
-};
